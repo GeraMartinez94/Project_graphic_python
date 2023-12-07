@@ -1,0 +1,26 @@
+import csv
+
+# Datos de ejemplo
+datos = [
+    {"categoria": "A", "valor": 30},
+    {"categoria": "B", "valor": 20},
+    {"categoria": "C", "valor": 15},
+    {"categoria": "D", "valor": 25},
+    {"categoria": "E", "valor": 10},
+]
+
+# Nombre del archivo CSV
+nombre_archivo = 'datos.csv'
+
+# Escribir los datos en el archivo CSV
+with open(nombre_archivo, 'w', newline='') as archivo_csv:
+    campos = ['categoria', 'valor']
+    escritor_csv = csv.DictWriter(archivo_csv, fieldnames=campos)
+
+    # Escribir encabezados
+    escritor_csv.writeheader()
+
+    # Escribir filas de datos
+    escritor_csv.writerows(datos)
+
+print(f'Se ha creado el archivo CSV: {nombre_archivo}')
